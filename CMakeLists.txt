@@ -22,27 +22,18 @@ set(SRC src)
 set(fdm_SRC
   ${SRC}/gauss.F90
   )
+set(fdm_MAIN heat_transfer.F90)
 
 # --------------------------------------------------------------------
 # Libraries & executables
 # --------------------------------------------------------------------
 
-function(define_lib kind)
-  add_library("fdm_${kind}" STATIC ${fdm_SRC})
-  set_target_properties("fdm_${kind}" PROPERTIES COMPILE_FLAGS "-D\"_KIND=${kind}\"")
-endfunction()
 
-function(define_ex kind)
-  add_executable("${PROJECT_NAME}_${kind}" heat_transfer.F90)
-  target_link_libraries("${PROJECT_NAME}_${kind}" "fdm_${kind}")
+function(define_precision kind)
+  add_executable("${PROJECT_NAME}_${kind}" ${fdm_MAIN} ${fdm_SRC})
   set_target_properties("${PROJECT_NAME}_${kind}" PROPERTIES COMPILE_FLAGS "-D\"_KIND=${kind}\"")
 endfunction()
 
-function(define_problem kind)
-  define_lib(${kind})
-  define_ex(${kind})
-endfunction()
-
-define_problem(4)
-define_problem(8)
-define_problem(16)
+define_precision(4)
+define_precision(8)
+define_precision(16)
