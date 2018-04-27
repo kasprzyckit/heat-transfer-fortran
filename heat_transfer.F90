@@ -1,11 +1,15 @@
 #define ISIZE 3
 
+#if !defined(_KIND)
+#define _KIND 8
+#endif
+
 program heat_transfer
-    use gauss_elimination!, only :: gauss_el
+    use gauss_elimination, only : gauss_el
     implicit none
 
-    real(kind=8) :: A(ISIZE, ISIZE), X(ISIZE), RES(ISIZE)
-    real(kind=8) :: P1, P2, P3, H2
+    real(kind = _KIND) :: A(ISIZE, ISIZE), X(ISIZE), RES(ISIZE)
+    real(kind = _KIND) :: P1, P2, P3, H2
     integer(kind=4) :: I
 
     H2 = 1.0 / (ISIZE * ISIZE)

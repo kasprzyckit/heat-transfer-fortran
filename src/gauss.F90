@@ -1,13 +1,17 @@
+#if !defined(_KIND)
+#define _KIND 8
+#endif
+
 module gauss_elimination
         implicit none
         
 contains
 
     subroutine gauss_el(A, X, N)
-        real(kind=8) :: C
+        real(kind=_KIND) :: C
         integer(kind = 4) :: I, J
-        integer(kind=4), intent(in) :: N
-        real(kind=8), intent(inout) :: A(N, N), X(N)
+        integer(kind = 4), intent(in) :: N
+        real(kind = _KIND), intent(inout) :: A(N, N), X(N)
 
         do I = 1,N
             do J = 1,N
