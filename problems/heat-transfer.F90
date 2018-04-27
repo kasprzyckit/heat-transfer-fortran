@@ -1,6 +1,6 @@
 #define ISIZE 3
 
-program heat_transfer
+program diffusion_convection
     use gauss_elimination!, only :: gauss_el
     implicit none
 
@@ -34,4 +34,4 @@ program heat_transfer
     print *, ""
     print *, RES
 
-end program heat_transfer
+end program diffusion_convection
