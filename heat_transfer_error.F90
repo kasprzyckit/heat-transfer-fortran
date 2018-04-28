@@ -14,7 +14,7 @@ program heat_transfer_error
     call get_command_argument(1, buffer, l, s)
     read(buffer,*) N
 
-    do i = 10, N, 10
+    do i = 10, N, 1
         call heat_transfer(i, err)
         print *, err
     enddo

@@ -42,7 +42,7 @@ module fdm
         X = X * real(N * N * (N + 1) * (-1))
         err = 0
         do i = 1,N
-            err = err + abs(X(i) - real(i)) / real(i)
+            err = err + abs(X(i) - real(i))
         enddo
 
         err = err / N
