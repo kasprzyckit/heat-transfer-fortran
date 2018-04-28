@@ -13,7 +13,7 @@ module fdm
         integer(kind=8), intent(in) :: N
         real(kind = _KIND), intent(inout) :: err
         real(kind = _KIND), allocatable :: A(:, :), X(:)
-        real(kind = _KIND) :: P1, P2, h2, mnum
+        real(kind = _KIND) :: P1, P2, h2
         integer(kind=8) :: i
 
         allocate(A(N, N))
@@ -39,11 +39,13 @@ module fdm
 
         call gauss_elimination(A, X, N)
 
-        mnum = real(N * N * (N + 1) * (-1))
+        X = X * real(N * N * (N + 1) * (-1))
         err = 0
         do i = 1,N
-            err = err + abs(X(i) - real(i)/mnum)
+            err = err + abs(X(i) - real(i)) / real(i)
         enddo
+
+        err = err / N
 
         deallocate(A)
         deallocate(X)
