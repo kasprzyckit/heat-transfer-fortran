@@ -11,8 +11,15 @@ Simple numerical solution to a heat transfer problem using FDM and visualisation
 cmake CMakeLists.txt
 ./run.sh
 ```
-This should work with both [gfortran](https://gcc.gnu.org/wiki/GFortran) or [ifort](https://software.intel.com/en-us/fortran-compilers) set as the defualt CMake Fortran compiler (preferably the former). In order to change the upper boundry of size of the FDM grid, up to which errors are to be measured, change the "N" variable in the "run.sh" script. To run only selected level of precision comment out the appropriate lines.
-The visualisation program depends on **numpy** and **matplotlib** Python packages.
+This should work with both [gfortran](https://gcc.gnu.org/wiki/GFortran) or [ifort](https://software.intel.com/en-us/fortran-compilers) set as the defualt CMake Fortran compiler (preferably the former). In order to change the upper size boundary of the FDM grid, up to which errors are to be measured, change the "N" variable in the "run.sh" script. To run only selected level of precision comment out the appropriate lines.<br />
+The visualisation program depends on **numpy** and **matplotlib** Python packages.< br />
+<br />
+Alternatively, after Makefile is generated, run the program directly, passing the FDM grid size boundary as the only argument.
+```
+./HeatTransfer_4 500
+./HeatTransfer_8 100
+./HeatTransfer_16 ...
+```
 
 ## Project structure:
 * **src/gauss.F90** - gaussian elimination function
