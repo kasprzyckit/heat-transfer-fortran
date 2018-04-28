@@ -2,24 +2,19 @@
 #define _KIND 16
 #endif
 
-module heat_transfer
+module fdm
     implicit none
 
     contains
 
     subroutine heat_transfer(N, err)
-        use gauss_elimination, only : gauss_el
+        use gauss, only : gauss_elimination
 
         integer(kind=8), intent(in) :: N
         real(kind = _KIND), intent(inout) :: err
         real(kind = _KIND), allocatable :: A(:, :), X(:)
         real(kind = _KIND) :: P1, P2, h2, mnum
         integer(kind=8) :: i
-        ! integer(kind=4) :: l, s
-        ! character(len=10) :: buffer
-
-        ! call get_command_argument(1, buffer, l, s)
-        ! read(buffer,*) N
 
         allocate(A(N, N))
         allocate(X(N))
@@ -42,7 +37,7 @@ module heat_transfer
         X(:) = 0.0
         X(N) = 1
 
-        call gauss_el(A, X, N)
+        call gauss_elimination(A, X, N)
 
         mnum = real(N * N * (N + 1) * (-1))
         err = 0
@@ -50,11 +45,9 @@ module heat_transfer
             err = err + abs(X(i) - real(i)/mnum)
         enddo
 
-        print *, err
-
         deallocate(A)
         deallocate(X)
 
     end
 
-end module heat_transfer
+end module fdm
