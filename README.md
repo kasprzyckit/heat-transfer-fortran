@@ -4,7 +4,7 @@ Simple numerical solution to a heat transfer problem using FDM and visualisation
 ## The problem:
 ![equation](http://latex.codecogs.com/gif.latex?-k%5Cfrac%7Bd%5E%7B2%7Du%7D%7Bdx%5E%7B2%7D%7D%3D0)<br />
 ![equation](http://latex.codecogs.com/gif.latex?u%280%29%3D0)<br />
-![equation](http://latex.codecogs.com/gif.latex?u%280%29%3D1)<br />
+![equation](http://latex.codecogs.com/gif.latex?u%281%29%3D1)<br />
 
 ## Compilation & running the program
 ```
@@ -27,10 +27,10 @@ Alternatively, after Makefile is generated, run the program directly, passing th
 
 ## Results
 For N ∈ {10, 1000}, with 4 byte fp precision.<br />
-![4byte](https://github.com/kasprzyckit/heat-transfer-fortran/blob/master/results/4_1000.png)
+![4byte](https://github.com/kasprzyckit/heat-transfer-fortran/blob/master/results/4b_1000.png)
 
 For N ∈ {10, 1000}, with 8 byte fp precision.<br />
-![8byte](https://github.com/kasprzyckit/heat-transfer-fortran/blob/master/results/8_1000.png)
+![8byte](https://github.com/kasprzyckit/heat-transfer-fortran/blob/master/results/8b_1000.png)
 
 For N ∈ {10, 1000}, with 16 byte fp precision.<br />
-![16byte](https://github.com/kasprzyckit/heat-transfer-fortran/blob/master/results/16_1000.png)
+![16byte](https://github.com/kasprzyckit/heat-transfer-fortran/blob/master/results/16b_1000.png)
