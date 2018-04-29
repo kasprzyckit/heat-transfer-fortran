@@ -38,11 +38,11 @@ module fdm
         X(N) = 1
 
         call gauss_elimination(A, X, N)
-
-        X = X * real(N * N * (N + 1) * (-1))
+        X = X * real(N * (N + 1) * (-1))
+        
         err = 0
         do i = 1,N
-            err = err + abs(X(i) - real(i))
+            err = err + abs(X(i) - real(i)/real(N))
         enddo
 
         err = err / N
