@@ -42,3 +42,14 @@ endfunction()
 define_precision(4)
 define_precision(8)
 define_precision(16)
+
+# --------------------------------------------------------------------
+# Tests
+# --------------------------------------------------------------------
+
+enable_testing()
+
+set(CTEST_OUTPUT_ON_FAILURE)
+add_test(NAME gauss_test
+  WORKING_DIRECTORY ${SRC}
+  COMMAND funit gauss)
