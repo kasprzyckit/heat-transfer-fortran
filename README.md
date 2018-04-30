@@ -1,7 +1,7 @@
 # 1D heat transfer problem
 Simple numerical solution to a heat transfer problem using FDM and visualisation of mean absolute error of the results for all of three levels of floating point precision in Fortran.
 
-## The problem:
+## The problem
 ![equation](http://latex.codecogs.com/gif.latex?-k%5Cfrac%7Bd%5E%7B2%7Du%7D%7Bdx%5E%7B2%7D%7D%3D0)<br />
 ![equation](http://latex.codecogs.com/gif.latex?u%280%29%3D0)<br />
 ![equation](http://latex.codecogs.com/gif.latex?u%280%29%3D1)<br />
@@ -16,14 +16,27 @@ The visualisation program depends on **numpy** and **matplotlib** Python package
 <br />
 Alternatively, after Makefile is generated, run the program directly, passing the FDM grid size boundary as the only argument.
 ```
+make
 ./HeatTransfer_4 500
 ./HeatTransfer_8 100
 ./HeatTransfer_16 ...
 ```
 
-## Project structure:
+## Testing
+Before testing it might be required to set environment variables for the testing framework, for example:
+```
+export FC="gfortran"
+export CXX="g++"
+export CC="gcc"
+export FSFLAG=-I
+```
+To run the tests type `make test` in the project's main directory.
+
+## Project structure
 * **src/gauss.F90** - gaussian elimination function
-* **src/fdm.F90** - filling the linear equation matrix and calculating the error
+* **src/fdm.F90** - fills the linear equation matrix and calculates the error
+* **heat_transfer_error.F90** - runs the program for different grid sizes
+* **src/gauss.fun** - tests for the **gauss** module
 
 ## Results
 For N ∈ {10, 1000}, with 4 byte fp precision.<br />
